@@ -167,7 +167,7 @@ public:
 //		Main
 //-------------------------------------------------------------------------
 /**
- * Usage example with reference to this example:
+ * Example made based on this exercise:
  * {@link https://www.urionlinejudge.com.br/repository/UOJ_1487_en.html}
  */
 int main()
