@@ -8,7 +8,7 @@
 /**
  * Responsible for dealing with the bounded knapsack problem.
  */
-class Knapsack
+class BoundedKnapsack
 {
 	//-------------------------------------------------------------------------
 	//		Attributes
@@ -43,7 +43,7 @@ public:
 	//-------------------------------------------------------------------------
 	//		Constructor
 	//-------------------------------------------------------------------------
-	Knapsack()
+	BoundedKnapsack()
 	{
 		maximumCapacity = -1;
 		totalElements = -1;
@@ -53,7 +53,7 @@ public:
 	//-------------------------------------------------------------------------
 	//		Destructor
 	//-------------------------------------------------------------------------
-	~Knapsack()
+	~BoundedKnapsack()
 	{
 		delete this;
 	}
@@ -72,7 +72,7 @@ public:
 	 * @param		W Maximum weight capacity
 	 * @return		This object to allow chained calls
 	 */
-	Knapsack* knapsack_bounded(std::vector<int>& w, std::vector<int>& v, int N, int W)
+	BoundedKnapsack* knapsack_bounded(std::vector<int>& w, std::vector<int>& v, int N, int W)
 	{
 		// Stores the maximum value which can be reached with a certain capacity 
 		// and with a certain number of elements
@@ -194,7 +194,7 @@ public:
 //-------------------------------------------------------------------------
 int main()
 {
-	Knapsack* knapsack = new Knapsack();
+	BoundedKnapsack* knapsack = new BoundedKnapsack();
 	int totalCapacity = 50, elements = 3;
 	std::vector<int> elements_weight = { 10, 20, 30 };
 	std::vector<int> elements_values = { 60, 100, 120 };

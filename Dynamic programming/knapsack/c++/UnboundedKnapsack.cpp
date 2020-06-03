@@ -8,7 +8,7 @@
 /**
  * Responsible for dealing with the unbounded knapsack problem.
  */
-class Knapsack
+class UnboundedKnapsack
 {
 	//-------------------------------------------------------------------------
 	//		Attributes
@@ -35,7 +35,7 @@ public:
 	//-------------------------------------------------------------------------
 	//		Constructor
 	//-------------------------------------------------------------------------
-	Knapsack()
+	UnboundedKnapsack()
 	{
 		maximumCapacity = -1;
 	}
@@ -44,7 +44,7 @@ public:
 	//-------------------------------------------------------------------------
 	//		Destructor
 	//-------------------------------------------------------------------------
-	~Knapsack()
+	~UnboundedKnapsack()
 	{
 		delete this;
 	}
@@ -62,7 +62,7 @@ public:
 	 * @param		W Maximum weight capacity
 	 * @return		This object to allow chained calls
 	 */
-	Knapsack* knapsack_unbounded(std::vector<int>& w, std::vector<int>& v, int N, int W)
+	UnboundedKnapsack* knapsack_unbounded(std::vector<int>& w, std::vector<int>& v, int N, int W)
 	{
 		// Stores the maximum value which can be reached with a certain capacity
 		maxValue.clear();
@@ -172,7 +172,7 @@ public:
  */
 int main()
 {
-	Knapsack* knapsack = new Knapsack();
+	UnboundedKnapsack* knapsack = new UnboundedKnapsack();
 	int totalCapacity = 60, elements = 5;
 	std::vector<int> elements_weight = { 10, 20, 5, 50, 22 };
 	std::vector<int> elements_values = { 30, 32, 4, 90, 45 };
