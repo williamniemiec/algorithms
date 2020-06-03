@@ -1,6 +1,8 @@
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <string>
 
 
 /**
@@ -61,15 +63,15 @@ public:
 	//		Methods
 	//-------------------------------------------------------------------------
 	/**
-	* Bounded knapsack considers only one occurrence of an item (no repeated
-	* elements).
-	*
-	* @param		w Weight of the elements
-	* @param		v Value of the elements
-	* @param		N Number of itens
-	* @param		W Maximum weight capacity
-	* @return		This object to allow chained calls
-	*/
+	 * Bounded knapsack considers only one occurrence of an item (no repeated
+	 * elements).
+	 *
+	 * @param		w Weight of the elements
+	 * @param		v Value of the elements
+	 * @param		N Number of itens
+	 * @param		W Maximum weight capacity
+	 * @return		This object to allow chained calls
+	 */
 	Knapsack* knapsack_bounded(std::vector<int>& w, std::vector<int>& v, int N, int W)
 	{
 		// Stores the maximum value which can be reached with a certain capacity 
@@ -124,20 +126,22 @@ public:
 	 * Returns maximum value for a certain number of elements and a certain 
 	 * capacity.
 	 *
-	 * @param		totalElements Number of elements
+	 * @param		elements Number of elements
 	 * @param		capacity Capacity of the knapsack
 	 * @return		Maximum possible value with number of elements and capacity 
 	 * provided
+	 * @throws		std::invalid_argument If capacity provided is out of bounds or
+	 * total elements is out of bounds
 	 */
-	int getMaximumValue(int totalElements, int capacity)
+	int getMaximumValue(int elements, int capacity)
 	{
 		if (capacity < 0 || capacity >= maximumCapacity)
 			throw std::invalid_argument("Capacity out of bounds");
 
-		if (totalElements < 0 || totalElements >= this->totalElements)
-			throw std::invalid_argument("Total elements out of bounds");
+		if (elements < 0 || elements >= this->totalElements)
+			throw std::invalid_argument("Elements out of bounds");
 
-		return maxValue[totalElements][capacity];
+		return maxValue[elements][capacity];
 	}
 
 	/**
@@ -146,6 +150,7 @@ public:
 	 * @param		capacity Capacity of the knapsack
 	 * @return		Elements that are part of the knapsack with the capacity 
 	 * provided
+	 * @throws		std::invalid_argument If capacity provided is out of bounds
 	 */
 	std::vector<int>& getSelectedElements(int capacity)
 	{
@@ -191,8 +196,8 @@ int main()
 {
 	Knapsack* knapsack = new Knapsack();
 	int totalCapacity = 50, elements = 3;
-	vector<int> elements_weight(elements) = { 10, 20, 30 };
-	vector<int> elements_values(elements) = { 60, 100, 120 };
+	std::vector<int> elements_weight = { 10, 20, 30 };
+	std::vector<int> elements_values = { 60, 100, 120 };
 
 	knapsack->knapsack_bounded(elements_weight, elements_values, elements, totalCapacity);
 
@@ -200,7 +205,7 @@ int main()
 				<< knapsack->getMaximumValue(elements, totalCapacity)
 				<< std::endl;
 	std::cout	<< "Selected values: "
-				<< knapsack->selectedElements_toString()
+				<< knapsack->selectedElements_toString(totalCapacity)
 				<< std::endl;
 
 	system("pause");

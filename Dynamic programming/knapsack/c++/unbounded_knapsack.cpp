@@ -1,19 +1,34 @@
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <string>
 
 
 /**
-* Responsible for dealing with the unbounded knapsack problem.
-*/
+ * Responsible for dealing with the unbounded knapsack problem.
+ */
 class Knapsack
 {
 	//-------------------------------------------------------------------------
 	//		Attributes
 	//-------------------------------------------------------------------------
+	/**
+	 * Stores maximum value of the knapsack for a certain capacity.
+	 */
 	std::vector<int> maxValue;
+
+	/**
+	 * Stores elements that are part of the knapsack with a certain capacity.
+	 * <li><b>Line:</b> Knapsack capacity</li>
+	 * <li><b>Column:</b> Elements</li>
+	 */
 	std::vector<std::vector<int> > selectedElements;
-	int size;
+
+	/**
+	 * Stores maximum backpack capacity.
+	 */
+	int maximumCapacity;
 
 
 public:
@@ -22,7 +37,7 @@ public:
 	//-------------------------------------------------------------------------
 	Knapsack()
 	{
-		size = -1;
+		maximumCapacity = -1;
 	}
 
 
@@ -53,11 +68,10 @@ public:
 		maxValue.clear();
 		maxValue.resize(W + 1);
 
-		size = W + 1;
+		maximumCapacity = W + 1;
 
 		// Stores selected elements with a certain capacity
 		selectedElements.resize(W + 1);
-
 
 		// Initializes maximum value vector with zero
 		for (int i = 0; i < W + 1; i++) {
@@ -88,9 +102,17 @@ public:
 		return this;
 	}
 
+	/**
+	 * Returns maximum value for a certain number of elements and a certain
+	 * capacity.
+	 *
+	 * @param		capacity Capacity of the knapsack
+	 * @return		Maximum possible value with capacity provided
+	 * @throws		std::invalid_argument If capacity provided is out of bounds
+	 */
 	int getMaximumValue(int capacity)
 	{
-		if (capacity < 0 || capacity >= size)
+		if (capacity < 0 || capacity >= maximumCapacity)
 			throw std::invalid_argument("Capacity out of bounds");
 
 		return maxValue[capacity];
@@ -102,10 +124,11 @@ public:
 	 * @param		capacity Capacity of the knapsack
 	 * @return		Elements that are part of the knapsack with the capacity
 	 * provided
+	 * @throws		std::invalid_argument If capacity provided is out of bounds
 	 */
 	std::vector<int>& getSelectedElements(int capacity)
 	{
-		if (capacity < 0 || capacity >= size)
+		if (capacity < 0 || capacity >= maximumCapacity)
 			throw std::invalid_argument("Capacity out of bounds");
 
 		return selectedElements[capacity];
@@ -151,16 +174,16 @@ int main()
 {
 	Knapsack* knapsack = new Knapsack();
 	int totalCapacity = 60, elements = 5;
-	vector<int> elements_weight(elements) = { 10, 20, 5, 50, 22 };
-	vector<int> elements_values(elements) = { 30, 32, 4, 90, 45 };
+	std::vector<int> elements_weight = { 10, 20, 5, 50, 22 };
+	std::vector<int> elements_values = { 30, 32, 4, 90, 45 };
 
 	knapsack->knapsack_unbounded(elements_weight, elements_values, elements, totalCapacity);
 
 	std::cout	<< "Maximum value: "
-				<< knapsack->getMaximumValue()
+				<< knapsack->getMaximumValue(totalCapacity)
 				<< std::endl;
 	std::cout	<< "Selected values: " 
-				<< knapsack->selectedElements_toString()
+				<< knapsack->selectedElements_toString(totalCapacity)
 				<< std::endl;
 
 	system("pause");
