@@ -119,7 +119,7 @@ public:
 	}
 
 	/**
-	 * Returns elements that are part of the knapsack with a certain capacity.
+	 * Returns elements that belong to the knapsack with a certain capacity.
 	 *
 	 * @param		capacity Capacity of the knapsack
 	 * @return		Elements that are part of the knapsack with the capacity

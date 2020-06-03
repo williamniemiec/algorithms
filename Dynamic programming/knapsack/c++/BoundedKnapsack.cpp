@@ -130,8 +130,8 @@ public:
 	 * @param		capacity Capacity of the knapsack
 	 * @return		Maximum possible value with number of elements and capacity 
 	 * provided
-	 * @throws		std::invalid_argument If capacity provided is out of bounds or
-	 * total elements is out of bounds
+	 * @throws		std::invalid_argument If capacity provided is out of bounds 
+	 * or total elements is out of bounds
 	 */
 	int getMaximumValue(int elements, int capacity)
 	{
@@ -145,7 +145,7 @@ public:
 	}
 
 	/**
-	 * Returns elements that are part of the knapsack with a certain capacity.
+	 * Returns elements that belongs to the knapsack with a certain capacity.
 	 *
 	 * @param		capacity Capacity of the knapsack
 	 * @return		Elements that are part of the knapsack with the capacity 
