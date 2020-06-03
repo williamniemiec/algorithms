@@ -125,6 +125,7 @@ public:
 	 * @return		Elements that are part of the knapsack with the capacity
 	 * provided
 	 * @throws		std::invalid_argument If capacity provided is out of bounds
+	 * @apiNote		Elements are referenced by their index + 1
 	 */
 	std::vector<int>& getSelectedElements(int capacity)
 	{
@@ -142,6 +143,7 @@ public:
 	 * @param		capacity Capacity of the knapsack
 	 * @return		Elements that are part of the knapsack with the capacity
 	 * provided
+	 * @apiNote		Elements are referenced by their index + 1
 	 */
 	std::string selectedElements_toString(int capacity)
 	{
@@ -182,7 +184,7 @@ int main()
 	std::cout	<< "Maximum value: "
 				<< knapsack->getMaximumValue(totalCapacity)
 				<< std::endl;
-	std::cout	<< "Selected values: " 
+	std::cout	<< "Selected elements: " 
 				<< knapsack->selectedElements_toString(totalCapacity)
 				<< std::endl;
 
