@@ -29,7 +29,7 @@ class BoundedKnapsack
 	std::vector<std::vector<int> > selectedElements;
 
 	/**
-	 * Stores maximum backpack capacity.
+	 * Stores maximum knapsack capacity.
 	 */
 	int maximumCapacity;
 
