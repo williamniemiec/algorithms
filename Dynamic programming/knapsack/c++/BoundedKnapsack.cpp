@@ -19,7 +19,7 @@ class BoundedKnapsack
 	 * <li><b>Line:</b> Element index</li>
 	 * <li><b>Column:</b> Knapsack capacity</li>
 	 */
-	std::vector<std::vector<int> > maxValue;
+	std::vector<std::vector<int> > knapsack;
 
 	/**
 	 * Stores elements that are part of the knapsack with a certain capacity.
@@ -76,7 +76,7 @@ public:
 	{
 		// Stores the maximum value which can be reached with a certain capacity 
 		// and with a certain number of elements
-		maxValue.resize(N + 1);
+		knapsack.resize(N + 1);
 		selectedElements.resize(W + 1);
 
 		totalElements = N + 1;
@@ -84,13 +84,13 @@ public:
 
 		// Initializes first column of the matrix with zeros
 		for (int i = 0; i < N + 1; i++) {
-			maxValue[i].resize(W + 1);
-			maxValue[i][0] = 0;
+			knapsack[i].resize(W + 1);
+			knapsack[i][0] = 0;
 		}
 
 		// Initializes first line of the matrix with zeros
 		for (int i = 1; i < W + 1; i++) {
-			maxValue[0][i] = 0;
+			knapsack[0][i] = 0;
 		}
 
 		// Computes the maximum value that can be reached varying the number of 
@@ -100,9 +100,9 @@ public:
 			// with current number of elements (n)
 			for (int capacity = 1; capacity < W + 1; capacity++) {
 				if (w[n - 1] <= capacity) {
-					// max(maxValue[n - 1][capacity], maxValue[n - 1][capacity - w[n - 1]] + v[n - 1])
-					if (maxValue[n - 1][capacity] <= maxValue[n - 1][capacity - w[n - 1]] + v[n - 1]) {
-						maxValue[n][capacity] = maxValue[n - 1][capacity - w[n - 1]] + v[n - 1];
+					// max(knapsack[n - 1][capacity], knapsack[n - 1][capacity - w[n - 1]] + v[n - 1])
+					if (knapsack[n - 1][capacity] <= knapsack[n - 1][capacity - w[n - 1]] + v[n - 1]) {
+						knapsack[n][capacity] = knapsack[n - 1][capacity - w[n - 1]] + v[n - 1];
 
 						// Stores selected elements
 						selectedElements[capacity].clear();
@@ -112,10 +112,10 @@ public:
 							selectedElements[capacity].push_back(elem);
 						}
 					} else {
-						maxValue[n][capacity] = maxValue[n - 1][capacity];
+						knapsack[n][capacity] = knapsack[n - 1][capacity];
 					}
 				} else
-					maxValue[n][capacity] = maxValue[n - 1][capacity];
+					knapsack[n][capacity] = knapsack[n - 1][capacity];
 			}
 		}
 
@@ -141,7 +141,7 @@ public:
 		if (elements < 0 || elements >= this->totalElements)
 			throw std::invalid_argument("Elements out of bounds");
 
-		return maxValue[elements][capacity];
+		return knapsack[elements][capacity];
 	}
 
 	/**

@@ -16,7 +16,7 @@ class UnboundedKnapsack
 	/**
 	 * Stores maximum value of the knapsack for a certain capacity.
 	 */
-	std::vector<int> maxValue;
+	std::vector<int> knapsack;
 
 	/**
 	 * Stores elements that are part of the knapsack with a certain capacity.
@@ -65,8 +65,8 @@ public:
 	UnboundedKnapsack* knapsack_unbounded(std::vector<int>& w, std::vector<int>& v, int N, int W)
 	{
 		// Stores the maximum value which can be reached with a certain capacity
-		maxValue.clear();
-		maxValue.resize(W + 1);
+		knapsack.clear();
+		knapsack.resize(W + 1);
 
 		maximumCapacity = W + 1;
 
@@ -75,7 +75,7 @@ public:
 
 		// Initializes maximum value vector with zero
 		for (int i = 0; i < W + 1; i++) {
-			maxValue[i] = 0;
+			knapsack[i] = 0;
 		}
 
 		// Computes the maximum value that can be reached for each capacity
@@ -83,9 +83,9 @@ public:
 			// Goes through all the elements
 			for (int n = 0; n < N; n++) {
 				if (w[n] <= capacity) {
-					// max(maxValue[capacity], maxValue[capacity - w[n]] + v[n])
-					if (maxValue[capacity] <= maxValue[capacity - w[n]] + v[n]) {
-						maxValue[capacity] = maxValue[capacity - w[n]] + v[n];
+					// max(knapsack[capacity], knapsack[capacity - w[n]] + v[n])
+					if (knapsack[capacity] <= knapsack[capacity - w[n]] + v[n]) {
+						knapsack[capacity] = knapsack[capacity - w[n]] + v[n];
 
 						// Stores selected elements
 						selectedElements[capacity].clear();
@@ -115,7 +115,7 @@ public:
 		if (capacity < 0 || capacity >= maximumCapacity)
 			throw std::invalid_argument("Capacity out of bounds");
 
-		return maxValue[capacity];
+		return knapsack[capacity];
 	}
 
 	/**
