@@ -1,13 +1,12 @@
 # Eight Queen Puzzle
 
-.center[
-![](https://solarianprogrammer.com/images/2017/11/20/queens_attack_patterns.png)
+<div align="center">
+	<img src="https://solarianprogrammer.com/images/2017/11/20/queens_attack_patterns.png" alt="Two queens placed in safe positions" />
+</div>
 
-.caption[
-**Fig. 1:** Two queens placed in safe positions.
-]
-
-]
+<p align="center">
+	Two queens placed in safe positions
+</p>  
 
 <hr />
 
@@ -21,6 +20,6 @@ Eight Queen Puzzle is about placing n non-attacking queens on an n×n matrix, fo
 <b>Note:</b> This problem is solved using backtracking.
 
 #### References
-[](https://www.geeksforgeeks.org/8-queen-problem/)
-[](https://en.wikipedia.org/wiki/Eight_queens_puzzle)
-[](https://solarianprogrammer.com) (image)
+- https://www.geeksforgeeks.org/8-queen-problem/
+- https://en.wikipedia.org/wiki/Eight_queens_puzzle
+- https://solarianprogrammer.com (image)
