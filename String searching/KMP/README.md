@@ -1,9 +1,12 @@
 # KMP - Knuth–Morris–Pratt algorithm
 
 <div align="center">
-  
-  <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Pattern-Searching-2-1.png" alt="Simple example" >
-</div
+  <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Pattern-Searching-2-1.png" alt="Simple example" />
+</div>
+ 
+<p align="center">
+	Simple example
+</p>  
   
 <hr />
 
