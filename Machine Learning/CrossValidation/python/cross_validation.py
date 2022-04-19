@@ -27,11 +27,11 @@ class CrossValidation:
         * Recall
         * F1
 
-        :param      estimator: The object to use to fit the data.
+        :param      estimator: The object to use to fit the data
         :param      attributes: The data to fit. Can be for example a list, or 
-        an array.
+        an array
         :param      target: The target variable to try to predict in the case
-        of supervised learning.
+        of supervised learning
         :param      k: Number of folds
 
         :return     Dictionary contaning the performance of each fold
